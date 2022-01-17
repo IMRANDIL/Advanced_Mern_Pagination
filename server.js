@@ -5,12 +5,14 @@ const app = express();
 const connectDb = require('./config/db');
 connectDb()
 const cors = require('cors');
+const PostRoute = require('./routes/PostRouter');
 
-
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+
+
+app.use('/api/v1/posts', PostRoute)
 
 
 

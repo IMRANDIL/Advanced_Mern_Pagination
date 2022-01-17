@@ -1,8 +1,8 @@
-require('dotenv').config({ path: './env' });
+require('dotenv').config();
 
 const fs = require('fs');
 
-const Post = require('../models/Posts');
+const Post = require('../models/Post');
 
 
 const connectDb = require('../config/db');
@@ -11,6 +11,7 @@ connectDb();
 
 
 const posts = JSON.parse(fs.readFileSync(`${__dirname}/posts.json`, 'utf-8'));
+
 
 const importData = async () => {
     try {
@@ -34,4 +35,11 @@ const deleteData = async () => {
         console.log(error);
         process.exit(1);
     }
+}
+
+
+if (process.argv[2] === '--import') {
+    importData();
+} else if (process.argv[2] === '--delete') {
+    deleteData()
 }
