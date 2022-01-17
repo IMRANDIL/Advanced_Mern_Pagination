@@ -1,0 +1,19 @@
+{
+  "name": "advanced_mern_pagination",
+  "version": "1.0.0",
+  "description": "Advanced Pagination Mern",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ali Imran Adil",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^13.0.1",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.6"
+  }
+}
