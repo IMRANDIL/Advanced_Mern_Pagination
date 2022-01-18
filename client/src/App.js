@@ -5,13 +5,14 @@ import Card from './components/Card';
 import Pagination from './components/Pagination';
 
 const App = () => {
-  const params = useParams();
-  const pageNumber = params.pageNumber || 1;
+  const { pageNumber } = useParams();
+
+
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [page, setPage] = useState(pageNumber);
+  const [page, setPage] = useState(pageNumber || 1);
   const [pages, setPages] = useState(1);
 
 
@@ -24,6 +25,7 @@ const App = () => {
         setPages(totalPages);
         setPosts(data);
         setLoading(false);
+
 
 
       } catch (error) {
@@ -43,18 +45,26 @@ const App = () => {
 
 
   return (
+
     <div className="App">
-      {/* Pagination component */}
-      <Pagination page={page} pages={pages} changePage={setPage} />
-      {/* Posts display */}
-      <div className="Card__Post">
-        {posts.map((post) => {
-          return (
-            <Card key={post._id} post={post} />
-          )
-        })}
-      </div>
-      <Pagination page={page} pages={pages} changePage={setPage} />
+      {loading ? <h3 className='loading-txt'>Loading...</h3> : error ? <h3 className='error-txt'>{error}</h3> : (
+        <>
+
+          {/* Pagination component */}
+          <Pagination page={page} pages={pages} changePage={setPage} />
+          {/* Posts display */}
+          <div className="Card__Post">
+            {posts.map((post) => {
+              return (
+                <Card key={post._id} post={post} />
+              )
+            })}
+          </div>
+          <Pagination page={page} pages={pages} changePage={setPage} />
+
+        </>
+      )}
+
     </div>
   );
 }

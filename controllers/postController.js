@@ -6,7 +6,7 @@ exports.getAllPosts = async (req, res) => {
         let query = Post.find();
 
         const page = parseInt(req.query.page) || 1;
-        const pageSize = parseInt(req.query.limit) || 50;
+        const pageSize = parseInt(req.query.limit) || 20;
         const skip = (page - 1) * pageSize;
         const total = await Post.countDocuments();
 
@@ -28,8 +28,8 @@ exports.getAllPosts = async (req, res) => {
         res.status(200).json({
             status: 'success',
             count: result.length,
-            page,
-            pages,
+            page: page,
+            pages: pages,
             data: result
         })
 
