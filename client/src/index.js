@@ -8,8 +8,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 ReactDOM.render(
   <Router>
     <Routes>
-      <Route exact path='/page/:pageNumber' component={App} />
-      <Route exact path='/' component={App} />
+      <Route exact path='/page/:pageNumber' element={<App />} />
+      <Route exact path='/' element={<App />} />
     </Routes>
   </Router>,
   document.getElementById('root')

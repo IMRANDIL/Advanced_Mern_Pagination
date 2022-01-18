@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './App.css';
 
-const App = ({ match }) => {
-  const pageNumber = match.params.pageNumber || 1;
+const App = () => {
+  const params = useParams();
+  const pageNumber = params.pageNumber || 1;
   console.log(pageNumber);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
