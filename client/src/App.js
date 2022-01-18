@@ -45,7 +45,7 @@ const App = () => {
   return (
     <div className="App">
       {/* Pagination component */}
-      <Pagination />
+      <Pagination page={page} pages={pages} changePage={setPage} />
       {/* Posts display */}
       <div className="Card__Post">
         {posts.map((post) => {
@@ -54,7 +54,7 @@ const App = () => {
           )
         })}
       </div>
-      <Pagination />
+      <Pagination page={page} pages={pages} changePage={setPage} />
     </div>
   );
 }
